@@ -28,13 +28,14 @@ app.post("/sign-up", (req, res) => {
 
 app.post("/tweets", (req, res) => {
   const tweet = req.body;
-  tweets.push(tweet);
+  const newTweet = tweet;
+  newTweet.avatar = users.at(-1).avatar;
+
+  tweets.push(newTweet);
   res.send(tweet);
 });
 
 app.get("/tweets", (req, res) => {
-  // pegar o usuário (users) e adicionar um tweet (tweets.tweet)
-
   res.send(tweets);
 });
 
