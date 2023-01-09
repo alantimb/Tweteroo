@@ -13,11 +13,16 @@ app.post("/sign-up", (req, res) => {
   const user = { username: username, avatar: avatar };
   users.push(user);
 
-  if (!username || !avatar || typeof username !== 'string' || typeof avatar !== 'string') {
+  if (
+    !username ||
+    !avatar ||
+    typeof username !== "string" ||
+    typeof avatar !== "string"
+  ) {
     res.status(400).send("Todos os campos são obrigatórios!");
     return;
   } else {
-    res.send(user);
+    res.status(201).send(user);
   }
 });
 
@@ -27,12 +32,13 @@ app.post("/tweets", (req, res) => {
   newTweet.avatar = users.at(-1).avatar;
 
   tweets.push(newTweet);
-
-  if (!username || !tweet || typeof tweet !== 'string') {
+  if ((users = [])) {
+    res.status(401);
+  } else if (!username || !tweet || typeof tweet !== "string") {
     res.status(400).send("Todos os campos são obrigatórios!");
     return;
   } else {
-    res.send({ username: username, tweet: tweet });
+    res.status(201).send({ username: username, tweet: tweet });
   }
 });
 
