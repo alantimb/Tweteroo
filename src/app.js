@@ -13,7 +13,7 @@ app.post("/sign-up", (req, res) => {
   const user = { username: username, avatar: avatar };
   users.push(user);
 
-  if (!username || !avatar) {
+  if (!username || !avatar || typeof username !== 'string' || typeof avatar !== 'string') {
     res.status(400).send("Todos os campos são obrigatórios!");
     return;
   } else {
@@ -28,7 +28,7 @@ app.post("/tweets", (req, res) => {
 
   tweets.push(newTweet);
 
-  if (!username || !tweet) {
+  if (!username || !tweet || typeof tweet !== 'string') {
     res.status(400).send("Todos os campos são obrigatórios!");
     return;
   } else {
