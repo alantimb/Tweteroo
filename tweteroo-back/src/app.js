@@ -24,7 +24,7 @@ app.post("/tweets", (req, res) => {
 });
 
 app.get("/tweets", (req, res) => {
-  const lastTweets = tweets.slice(-10);
+  const lastTweets = tweets.slice(-10).reverse();
 
   res.send(lastTweets);
 });
