@@ -9,18 +9,31 @@ const users = [];
 const tweets = [];
 
 app.post("/sign-up", (req, res) => {
-  const user = req.body;
+  const { username, avatar } = req.body;
+  const user = { username: username, avatar: avatar };
   users.push(user);
-  res.send(user);
+
+  if (!username || !avatar) {
+    res.status(400).send("Todos os campos são obrigatórios!");
+    return;
+  } else {
+    res.send(user);
+  }
 });
 
 app.post("/tweets", (req, res) => {
-  const tweet = req.body;
-  const newTweet = tweet;
+  const { username, tweet } = req.body;
+  const newTweet = { username: username, tweet: tweet };
   newTweet.avatar = users.at(-1).avatar;
 
   tweets.push(newTweet);
-  res.send(tweet);
+
+  if (!username || !tweet) {
+    res.status(400).send("Todos os campos são obrigatórios!");
+    return;
+  } else {
+    res.send({ username: username, tweet: tweet });
+  }
 });
 
 app.get("/tweets", (req, res) => {
