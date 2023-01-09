@@ -1,15 +1,16 @@
 {
-  "name": "tweteroo-back",
+  "name": "tweteroo-api",
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js"
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js", 
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alan Timbó",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
